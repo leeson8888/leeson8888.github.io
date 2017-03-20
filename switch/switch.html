@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>switch的简单实现</title>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%
+        }
+        body{
+            position: relative;
+        }
+        .center{
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%,-50%);
+            overflow: hidden;
+
+        }
+        .oov-switch{
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+            line-height: 24px;
+            background-color: #cccccc;
+            vertical-align: middle;
+            border: 1px solid #ccc;
+            border-radius: 24px;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+        }
+        .oov-switch-checked{
+            border-color: #3399ff;
+            background-color: #3399ff;
+        }
+        .oov-switch-inner{
+            position: absolute;
+            left:25px;
+            font-size: 12px;
+            color: #ffffff;
+        }
+        .oov-switch:after{
+            content: "";
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+            background-color: #fff;
+            position: absolute;
+            top: 2px;
+            cursor: pointer;
+        }
+        .oov-switch-checked .oov-switch-inner {
+            left: 8px;
+        }
+        .oov-switch-checked:after{
+            left: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <span class="oov-switch center">
+        <span class="oov-switch-inner">
+            关
+        </span>
+    </span>
+
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+$('.oov-switch').on('click',function () {
+    $(this).toggleClass('oov-switch-checked');
+    var switchText=$(this).find('.oov-switch-inner').text()=="开"?"关":"开";
+    $(this).find('.oov-switch-inner').text(switchText);
+    console.log("当前值:"+switchText);
+})
+</script>
+</body>
+</html>
